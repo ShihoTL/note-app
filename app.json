@@ -18,9 +18,19 @@
         "foregroundImage": "./assets/images/icon.png"
       }
     },
-    "plugins": ["expo-router", "expo-font"],
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-web-browser"
+    ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "adf841c5-f23f-489e-80ab-be2745826cc7"
+      }
     }
   }
 }
