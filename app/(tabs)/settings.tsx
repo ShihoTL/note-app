@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Switch } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Moon, Sun } from 'lucide-react-native';
 import { useTheme } from '@/contexts/ThemeContext';
+import ScreenWrapper from '@/components/ScreenWrapper';
 
 export default function SettingsScreen() {
   const { colors, theme, toggleTheme } = useTheme();
@@ -73,7 +74,7 @@ export default function SettingsScreen() {
   });
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ScreenWrapper style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Settings</Text>
       </View>
@@ -119,6 +120,6 @@ export default function SettingsScreen() {
           Built with React Native and Expo
         </Text>
       </View>
-    </SafeAreaView>
+    </ScreenWrapper>
   );
 }

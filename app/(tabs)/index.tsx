@@ -15,6 +15,7 @@ import { NotesService } from '@/services/notesService';
 import { NoteItem } from '@/components/NoteItem';
 import { SearchBar } from '@/components/SearchBar';
 import { Note } from '@/types';
+import ScreenWrapper from '@/components/ScreenWrapper';
 
 export default function NotesScreen() {
   const { colors } = useTheme();
@@ -135,7 +136,7 @@ export default function NotesScreen() {
   });
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ScreenWrapper style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Notes</Text>
         <SearchBar
@@ -180,6 +181,6 @@ export default function NotesScreen() {
           <Plus size={24} color={colors.background} />
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </ScreenWrapper>
   );
 }
