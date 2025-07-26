@@ -72,8 +72,6 @@ npx expo start
 
 ---
 
----
-
 ## 🛠️ Customization
 
 You can customize the app by:
