@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "NotesApp",
+    "slug": "notes-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "notesapp",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.notesapp.mobile"
+    },
+    "android": {
+      "package": "com.notesapp.mobile",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/icon.png"
+      }
+    },
+    "plugins": ["expo-router", "expo-font"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
