@@ -2,7 +2,13 @@ import { useEffect } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useFrameworkReady } from '@/hooks/useFrameworkReady';
-import { ThemeProvider } from '@/contexts/ThemeContext';
+import { ThemeProvider, useTheme } from '@/contexts/ThemeContext';
+
+function StatusBarWithTheme() {
+  const { theme } = useTheme();
+
+  return <StatusBar style={theme === 'light' ? 'dark' : 'light'} translucent />;
+}
 
 export default function RootLayout() {
   useFrameworkReady();
@@ -14,7 +20,7 @@ export default function RootLayout() {
         <Stack.Screen name="note/[id]" />
         <Stack.Screen name="+not-found" />
       </Stack>
-      <StatusBar style="auto" />
+      <StatusBarWithTheme />
     </ThemeProvider>
   );
 }

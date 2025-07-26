@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import { ArrowLeft, Check } from 'lucide-react-native';
@@ -38,7 +45,7 @@ export default function NoteScreen() {
   const loadNote = async () => {
     try {
       const notes = await NotesService.getAllNotes();
-      const foundNote = notes.find(n => n.id === id);
+      const foundNote = notes.find((n) => n.id === id);
       if (foundNote) {
         setNote(foundNote);
         setTitle(foundNote.title);
@@ -83,7 +90,11 @@ export default function NoteScreen() {
         'Unsaved Changes',
         'You have unsaved changes. Do you want to save before leaving?',
         [
-          { text: 'Discard', style: 'destructive', onPress: () => router.back() },
+          {
+            text: 'Discard',
+            style: 'destructive',
+            onPress: () => router.back(),
+          },
           { text: 'Save', onPress: saveNote },
         ]
       );
@@ -122,7 +133,7 @@ export default function NoteScreen() {
     saveButton: {
       flexDirection: 'row',
       alignItems: 'center',
-      backgroundColor: colors.accent,
+      backgroundColor: '#da9347ff',
       paddingHorizontal: 16,
       paddingVertical: 8,
       borderRadius: 8,

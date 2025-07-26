@@ -1,4 +1,3 @@
-// components/CustomTabBar.tsx
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useRouter, useSegments } from 'expo-router';
@@ -7,16 +6,15 @@ import { useTheme } from '@/contexts/ThemeContext';
 import * as Haptics from 'expo-haptics';
 
 export default function CustomTabBar() {
-  const { colors } = useTheme();
+  const { colors, theme } = useTheme();
   const router = useRouter();
   const segments = useSegments();
   const active = segments[1] ?? 'index';
 
   const handleTabPress = (route: string, targetRoute: string) => {
     // Trigger haptic feedback on every tap
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft);
 
-    // Navigate only if not already on the target route
     if (active !== route) {
       router.navigate(targetRoute as any);
     }
@@ -36,6 +34,7 @@ export default function CustomTabBar() {
         active={active === 'index'}
         onPress={() => handleTabPress('index', '/')}
         colors={colors}
+        theme={theme}
       />
       <TabButton
         label="Settings"
@@ -44,14 +43,24 @@ export default function CustomTabBar() {
         active={active === 'settings'}
         onPress={() => handleTabPress('settings', '/settings')}
         colors={colors}
+        theme={theme}
       />
     </View>
   );
 }
 
-function TabButton({ label, icon: Icon, active, onPress, colors }: any) {
-  const iconColor = active ? '#FFFFFF' : '#888888';
-  const textColor = active ? '#FFFFFF' : '#888888';
+function TabButton({ label, icon: Icon, active, onPress, colors, theme }: any) {
+  const iconColor = active
+    ? theme === 'light'
+      ? '#333333'
+      : '#FFFFFF'
+    : '#888888';
+
+  const textColor = active
+    ? theme === 'light'
+      ? '#333333'
+      : '#FFFFFF'
+    : '#888888';
 
   return (
     <TouchableOpacity style={styles.tabButton} onPress={onPress}>
